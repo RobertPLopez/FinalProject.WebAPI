@@ -27,7 +27,7 @@ namespace FinalProject.Data
 
         [ForeignKey(nameof(Review))]
         public int ReviewId { get; set; }
-        public Review Review { get; set; }
+        public virtual Review Review { get; set; }
 
         [Required]
         [Display(Name = "Reaction")]
