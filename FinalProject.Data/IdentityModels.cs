@@ -3,6 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FinalProject.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -28,6 +29,7 @@ namespace FinalProject.Data
         {
         }
         
+        public DbSet<Game> Games { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
