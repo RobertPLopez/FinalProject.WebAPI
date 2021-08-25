@@ -30,6 +30,6 @@ namespace FinalProject.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Reveiw> Reviews { get; set; }
+        public DbSet<Review> Reviews { get; set; }
     }
 }
