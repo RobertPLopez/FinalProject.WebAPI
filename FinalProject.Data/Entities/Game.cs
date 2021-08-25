@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Data.Entities
 {
+
     public class Game
     {
+
         [Key]
         public int GameID { get; set; }
         [Required]
