@@ -16,7 +16,7 @@ namespace FinalProject.Data
         public int GameId { get; set; }
         public virtual Game Game { get; set; }
         [ForeignKey(nameof(Author))]
-        public int AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
         public virtual Author Author { get; set; }
         [Required]
         public string AuthorName { get; set; }
@@ -25,8 +25,8 @@ namespace FinalProject.Data
         [Required]
         public double Rating { get; set; }
         [Required]
-        public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime CreatedUtc { get; set; }
+        public DateTime ModifiedUtc { get; set; }
         
 
 

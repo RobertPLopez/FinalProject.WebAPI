@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
-    public class ReviewRead
+    public class ReviewDetail
     {
         public int ReviewId { get; set; }
         public string AuthorName { get; set; }
         public string Content { get; set; }
         public double Rating { get; set; }
         [Display(Name = "Created")]
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
     }
 }
