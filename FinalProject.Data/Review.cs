@@ -25,8 +25,8 @@ namespace FinalProject.Data
         [Required]
         public double Rating { get; set; }
         [Required]
-        public DateTime CreatedUtc { get; set; }
-        public DateTime ModifiedUtc { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         
 
 

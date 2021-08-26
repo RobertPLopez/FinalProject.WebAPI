@@ -53,5 +53,53 @@ namespace FinalProject.Services
             }
         }
         
+        public bool CreateReview(ReviewCreate model)
+        {
+            var entity = new Review()
+            {
+                AuthorId = _userId,
+                AuthorName = model.AuthorName,
+                Content = model.Content,
+                Rating = model.Rating,
+                CreatedUtc = DateTimeOffset.Now
+            };
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Reviews.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool UpdateReview(ReviewUpdate model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reviews
+                        .Single(e => e.ReviewId == model.ReviewId && e.AuthorId == _userId);
+                entity.AuthorName = model.AuthorName;
+                entity.Content = model.Content;
+                entity.Rating = model.Rating;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteReview(int reviewId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reviews
+                        .Single(e => e.ReviewId == reviewId && e.AuthorId == _userId);
+
+                ctx.Reviews.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

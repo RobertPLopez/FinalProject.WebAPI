@@ -13,7 +13,6 @@ namespace FinalProject.Models
         public string AuthorName { get; set; }
         public string Content { get; set; }
         public double Rating { get; set; }
-        [Display(Name ="Edited")]
-        public DateTime ModifiedAt { get; set; }
+        
     }
 }

@@ -9,6 +9,8 @@ namespace FinalProject.Models
 {
     public class ReviewCreate
     {
+        public string AuthorName { get; set; }
+
         [MaxLength(1000)]
         public string Content { get; set; }
         public double Rating { get; set; }
