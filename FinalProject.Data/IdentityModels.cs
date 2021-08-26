@@ -1,6 +1,8 @@
+
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
+
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FinalProject.Data.Entities;
@@ -36,12 +38,15 @@ namespace FinalProject.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<Review> Reviews { get; set; }
+
+
 
         public DbSet<Note> Notes { get; set; } //<--- Add this
 
 
         public DbSet<Reaction> Reactions { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -68,6 +73,7 @@ public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUs
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
+
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
