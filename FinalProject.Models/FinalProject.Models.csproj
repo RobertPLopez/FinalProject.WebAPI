@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewCreate.cs" />
-    <Compile Include="ReviewRead.cs" />
+    <Compile Include="ReviewListItem.cs" />
+    <Compile Include="ReviewDetail.cs" />
     <Compile Include="ReviewUpdate.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -58,10 +58,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FinalProject.Data\FinalProject.Data.csproj">
+      <Project>{CB1C5F54-5A90-466D-904B-447217872B43}</Project>
+      <Name>FinalProject.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FinalProject.Models\FinalProject.Models.csproj">
+      <Project>{C4E154AC-8D70-449B-8C69-8450E64C1059}</Project>
+      <Name>FinalProject.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
