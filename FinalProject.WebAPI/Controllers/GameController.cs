@@ -14,7 +14,7 @@ namespace FinalProject.WebAPI.Controllers
     [Authorize]
     public class GameController : ApiController
     {
-        private ReactionServices CreateGameServices()
+        private GameServices CreateGameServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var reactionServices = new GameServices(userId);
