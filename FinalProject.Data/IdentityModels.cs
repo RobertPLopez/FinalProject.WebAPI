@@ -1,8 +1,9 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FinalProject.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -29,18 +30,36 @@ namespace FinalProject.Data
         {
         }
         
+        public DbSet<Game> Games { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
+
+        public DbSet<Note> Notes { get; set; } //<--- Add this
+
+
         public DbSet<Reaction> Reactions { get; set; }
         public DbSet<Review> Reviews { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
+
+             .Conventions
+             .Remove<PluralizingTableNameConvention>();
+            
+            modelBuilder
+             .Configurations
+             .Add(new IdentityUserLoginConfiguration())
+             .Add(new IdentityUserRoleConfiguration());
+        }
+    }
+
+
+public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
 
@@ -52,18 +71,10 @@ namespace FinalProject.Data
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+
     {
         public IdentityUserLoginConfiguration()
         {
             HasKey(iul => iul.UserId);
         }
     }
-
-    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
-    {
-        public IdentityUserRoleConfiguration()
-        {
-            HasKey(iur => iur.UserId);
-        }
-    }
-}
