@@ -32,7 +32,7 @@ namespace FinalProject.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<GameListItem> GetNotes()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -40,7 +40,7 @@ namespace FinalProject.Services
                   .Notes
                   .Where(e => e.OwnerId == _userId)
                   .Select(
-                        e => new NoteListItem
+                        e => new GameListItem
                         {
                              NoteId = e.NoteId,
                              Title = e.Title,
@@ -51,7 +51,7 @@ namespace FinalProject.Services
             }
         }
 
-        public NoteDetail GetNoteById(int id)
+        public GameDetail GetNoteById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -59,7 +59,7 @@ namespace FinalProject.Services
                 .Notes
                 .Single(e => e.NoteId == id && e.OwnerId == _userId);
 	             return
-            new NoteDetail
+            new GameDetail
                 {
                     NoteId = entity.NoteId,
                     Title = entity.Title,
@@ -70,7 +70,7 @@ namespace FinalProject.Services
             }
         }
 
-        public bool UpdateNote(NoteEdit model)
+        public bool UpdateNote(GameEdit model)
 	    {
 	        using(var ctx = new ApplicationDbContext())
 	        {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
-    public class NoteCreate
+    public class GameCreate
     {
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
