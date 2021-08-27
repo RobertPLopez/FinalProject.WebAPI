@@ -43,7 +43,7 @@ namespace FinalProject.WebAPI.Controllers
         	    return Ok(note);
         }
 
-        public IHttpActionResult Put(NoteEdit note)
+        public IHttpActionResult Put(GameEdit note)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
