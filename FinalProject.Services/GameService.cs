@@ -10,7 +10,7 @@ namespace FinalProject.Services
     {
         private readonly Guid _userId;
 
-        public ReactionServices(Guid userId)
+        public GameService(Guid userId)
         {
             _userId = userId;
         }
