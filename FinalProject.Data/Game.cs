@@ -17,7 +17,7 @@ namespace FinalProject.Data
     public class Game
     {
         [Key]
-        public int GameID { get; set; }
+        public Guid GameID { get; set; }
         [Required]
         public string DeveloperName { get; set; }
         [Required]

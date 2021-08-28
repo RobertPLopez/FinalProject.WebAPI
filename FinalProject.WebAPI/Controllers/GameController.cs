@@ -8,33 +8,31 @@ using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services;
 using Microsoft.AspNet.Identity;
+using FinalProject.Services;
 
 namespace FinalProject.WebAPI.Controllers
 {
     [Authorize]
     public class GameController : ApiController
     {
-        private GameServices CreateGameServices()
+        private GameService CreateGameServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var reactionServices = new GameServices(userId);
+            var reactionServices = new GameService(userId);
             return reactionServices;
         }
 
-        public IHttpActionResult Post(GameCreate game)
+        public IHttpActionResult Post(GameCreate Game)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            var service = CreateGameServices();
-
-            if (!service.CreateGame(game))
+            var Services = CreateGameServices();
+            if (!Services.CreateGame(Game))
                 return InternalServerError();
-
             return Ok();
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(Guid id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -43,32 +41,27 @@ namespace FinalProject.WebAPI.Controllers
             }
 
             var service = CreateGameServices();
-            var games = service.GetGameByGameId(id);
+            var games = service.GetGamesByGameId(id);
             return Ok(games);
         }
 
-        public IHttpActionResult Delete(int id)
-        {
-            var service = CreateGameServices();
-
-            if (!service.DeleteGame(id))
-                return InternalServerError();
-
-            return Ok();
-        }
-
-        public IHttpActionResult Put(GameEdit game)
+        public IHttpActionResult Put(GameEdit Game)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var service = CreateGameServices();
-
-            if (!service.UpdateGame(game))
+            if (!service.UpdateGame(Game))
                 return InternalServerError();
-
             return Ok();
 
+        }
+
+        public IHttpActionResult Delete (Guid id)
+        {
+            var service = CreateGameServices();
+            if (!service.DeleteGame(id))
+                return InternalServerError();
+            return Ok();
         }
     }
 }
