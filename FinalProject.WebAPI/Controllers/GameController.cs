@@ -8,6 +8,7 @@ using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services;
 using Microsoft.AspNet.Identity;
+using FinalProject.Services;
 
 namespace FinalProject.WebAPI.Controllers
 {
@@ -21,19 +22,6 @@ namespace FinalProject.WebAPI.Controllers
             return reactionServices;
         }
 
-        public IHttpActionResult Post(GameCreate game)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateGameServices();
-
-            if (!service.CreateGame(game))
-                return InternalServerError();
-
-            return Ok();
-        }
-
         public IHttpActionResult Get(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -45,30 +33,6 @@ namespace FinalProject.WebAPI.Controllers
             var service = CreateGameServices();
             var games = service.GetGameByGameId(id);
             return Ok(games);
-        }
-
-        public IHttpActionResult Delete(int id)
-        {
-            var service = CreateGameServices();
-
-            if (!service.DeleteGame(id))
-                return InternalServerError();
-
-            return Ok();
-        }
-
-        public IHttpActionResult Put(GameEdit game)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateGameServices();
-
-            if (!service.UpdateGame(game))
-                return InternalServerError();
-
-            return Ok();
-
         }
     }
 }
