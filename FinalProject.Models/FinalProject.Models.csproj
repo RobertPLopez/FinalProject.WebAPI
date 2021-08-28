@@ -57,21 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoteEdit.cs" />
-    <Compile Include="NoteDetail.cs" />
-    <Compile Include="NoteCreate.cs" />
-    <Compile Include="NoteListItem.cs" />
+    <Compile Include="GameEdit.cs" />
+    <Compile Include="GameDetail.cs" />
+    <Compile Include="GameCreate.cs" />
+    <Compile Include="GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="ReviewCreate.cs" />
-    <Compile Include="ReviewListItem.cs" />
-    <Compile Include="ReviewDetail.cs" />
     <Compile Include="ReviewUpdate.cs" />
-
     <Compile Include="ReactionCreate.cs" />
     <Compile Include="ReactionEdit.cs" />
     <Compile Include="ReactionListItem.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
