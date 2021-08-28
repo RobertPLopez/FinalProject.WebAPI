@@ -22,12 +22,12 @@ namespace FinalProject.WebAPI.Controllers
             return reactionServices;
         }
 
-        public IHttpActionResult Post(GameCreate game)
+        public IHttpActionResult Post(GameCreate Game)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var Services = CreateGameServices();
-            if (!Services.CreateGame(game))
+            if (!Services.CreateGame(Game))
                 return InternalServerError();
             return Ok();
         }
@@ -43,6 +43,17 @@ namespace FinalProject.WebAPI.Controllers
             var service = CreateGameServices();
             var games = service.GetGamesByGameId(id);
             return Ok(games);
+        }
+
+        public IHttpActionResult Put (GameEdit Game)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateGameServices();
+            if (!service.UpdateGame(Game))
+                return InternalServerError();
+            return Ok();
+
         }
     }
 }
