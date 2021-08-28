@@ -34,6 +34,25 @@ namespace FinalProject.Services
             }
         }
 
+        public GameDetail GetGamesById (Guid id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Games
+                        .Single(e => e.GameID == id && e.GameID == _gameID);
+                return
+                    new GameDetail
+                    {
+                        GameID = entity.GameID,
+                        DeveloperName = entity.DeveloperName,
+                        Description = entity.Description,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
         public IEnumerable<GameListItem> GetGamesByGameId(Guid id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,7 +66,7 @@ namespace FinalProject.Services
                             e =>
                                 new GameListItem
                                 {
-                                    GameID = e.ID,
+                                    GameID = e.GameID,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );

@@ -9,10 +9,10 @@ namespace FinalProject.Models
 {
     public class GameDetail
     {
-        public int GameId { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        [Display(Name = "Created")]
+        public Guid GameID { get; set; }
+        public string DeveloperName { get; set; }
+        public string Description { get; set; }
+        [Display(Name = "Here is the game you chose")]
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
