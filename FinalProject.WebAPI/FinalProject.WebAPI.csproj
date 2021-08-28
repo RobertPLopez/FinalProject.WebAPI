@@ -335,7 +335,7 @@
       <Name>FinalProject.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\FinalProject.Services\FinalProject.Services.csproj">
-      <Project>{1c629a5d-1c98-411f-abdd-7e4acba45b2e}</Project>
+      <Project>{1C629A5D-1C98-411F-ABDD-7E4ACBA45B2E}</Project>
       <Name>FinalProject.Services</Name>
     </ProjectReference>
   </ItemGroup>

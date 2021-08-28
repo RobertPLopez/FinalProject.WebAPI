@@ -63,6 +63,8 @@
     <Compile Include="GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewCreate.cs" />
+    <Compile Include="ReviewDetail.cs" />
+    <Compile Include="ReviewListItem.cs" />
     <Compile Include="ReviewUpdate.cs" />
     <Compile Include="ReactionCreate.cs" />
     <Compile Include="ReactionEdit.cs" />

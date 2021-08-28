@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FinalProject.Data;
+using FinalProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Services
 {
-    class GameService
+    public class GameServices
     {
         private readonly Guid _userId;
 
-        public GameService(Guid userId)
+        public GameServices(Guid userId)
         {
             _userId = userId;
         }
