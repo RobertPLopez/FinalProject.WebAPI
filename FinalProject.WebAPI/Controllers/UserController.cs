@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace FinalProject.WebAPI.Controllers
 {
-    public class AdminController : Controller
+    public class UserController : Controller
     {
         private UserManager<AppUser> userManager;
 
-        public AdminController(UserManager<AppUser> usrMgr)
+        public UserController(UserManager<AppUser> usrMgr)
         {
             userManager = usrMgr;
         }

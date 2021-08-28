@@ -42,7 +42,7 @@ namespace FinalProject.Data
 
 
 
-        public DbSet<Note> Notes { get; set; } //<--- Add this
+        public DbSet<Game> Games { get; set; } //<--- Add this
 
 
         public DbSet<Reaction> Reactions { get; set; }

@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="Games\GameCreate.cs" />
     <Compile Include="Games\GameEdit.cs" />
-    <Compile Include="Users\Users.cs" />
     <Compile Include="Games\GameDetail.cs" />
     <Compile Include="Games\GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +67,10 @@
     <Compile Include="Reaction\ReactionCreate.cs" />
     <Compile Include="Reaction\ReactionEdit.cs" />
     <Compile Include="Reaction\ReactionListItem.cs" />
+    <Compile Include="Users\UserListItem.cs" />
+    <Compile Include="Users\UserEdit.cs" />
+    <Compile Include="Users\UserDetail.cs" />
+    <Compile Include="Users\UserCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
