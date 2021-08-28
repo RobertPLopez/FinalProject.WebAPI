@@ -68,12 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinalProject.Data\FinalProject.Data.csproj">
-      <Project>{cb1c5f54-5a90-466d-904b-447217872b43}</Project>
+      <Project>{CB1C5F54-5A90-466D-904B-447217872B43}</Project>
       <Name>FinalProject.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FinalProject.Models\FinalProject.Models.csproj">
-      <Project>{c4e154ac-8d70-449b-8c69-8450e64c1059}</Project>
-      <Name>FinalProject.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
