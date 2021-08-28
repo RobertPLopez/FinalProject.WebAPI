@@ -74,5 +74,26 @@ namespace FinalProject.Services
                 return query.ToArray();
             }
         }
+
+        public bool UpdateGame(GameEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                     ctx
+                         .Games
+                         .Single(e => e.GameID == model.GameID && e.GameID == _gameID);
+
+                    entity.GameID = model.GameID;
+                    entity.DeveloperName = model.DeveloperName;
+                    entity.Description = model.Description;
+                    entity.AverageRating = model.AverageRating;
+                    entity.AgeOfPlayer = model.AgeOfPlayer;
+                    entity.CreatedUtc = model.CreatedUtc;
+                    entity.ModifiedUtc = model.ModifiedUtc;
+
+                    return ctx.SaveChanges() == 1;
+            };
+        }
     }
 }

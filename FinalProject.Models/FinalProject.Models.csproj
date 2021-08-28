@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Games\GameCreate.cs" />
-    <Compile Include="Games\GameDelete.cs" />
+    <Compile Include="Games\GameEdit.cs" />
     <Compile Include="Users\Users.cs" />
     <Compile Include="Games\GameDetail.cs" />
     <Compile Include="Games\GameListItem.cs" />
