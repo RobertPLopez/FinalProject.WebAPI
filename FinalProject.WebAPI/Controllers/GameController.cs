@@ -15,14 +15,24 @@ namespace FinalProject.WebAPI.Controllers
     [Authorize]
     public class GameController : ApiController
     {
-        private GameServices CreateGameServices()
+        private GameService CreateGameServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var reactionServices = new GameServices(userId);
+            var reactionServices = new GameService(userId);
             return reactionServices;
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Post(GameCreate game)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var Services = CreateGameServices();
+            if (!Services.CreateGame(game))
+                return InternalServerError();
+            return Ok();
+        }
+
+        public IHttpActionResult Get(Guid id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -31,7 +41,7 @@ namespace FinalProject.WebAPI.Controllers
             }
 
             var service = CreateGameServices();
-            var games = service.GetGameByGameId(id);
+            var games = service.GetGamesByGameId(id);
             return Ok(games);
         }
     }
