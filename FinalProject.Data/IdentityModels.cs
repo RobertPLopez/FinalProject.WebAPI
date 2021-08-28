@@ -29,13 +29,14 @@ namespace FinalProject.Data
         {
         }
 
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
+
+        public DbSet<User> Users {get; set;}
         public DbSet<Review> Reviews { get; set; }
-
-
-
         public DbSet<Game> Games { get; set; }
-
-
         public DbSet<Reaction> Reactions { get; set; }
 
 
@@ -51,9 +52,7 @@ namespace FinalProject.Data
              .Add(new IdentityUserRoleConfiguration());
         }
     }
-
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
-
     {
         public IdentityUserLoginConfiguration()
         {
