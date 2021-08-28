@@ -10,11 +10,11 @@ namespace FinalProject.Services
 {
     public class GameService
     {
-        private readonly Guid _gameID;
+        private readonly Guid _userID;
 
-        public GameService(Guid gameID)
+        public GameService(Guid userID)
         {
-            _gameID = gameID;
+            _userID = userID;
         }
 
         public bool CreateGame (GameCreate model)
@@ -22,7 +22,7 @@ namespace FinalProject.Services
             var entity =
                 new Game()
                 {
-                    GameID = _gameID,
+                    GameID = _userID,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
                     CreatedUtc = DateTimeOffset.Now
@@ -41,7 +41,7 @@ namespace FinalProject.Services
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == id && e.GameID == _gameID);
+                        .Single(e => e.GameID == id && e.GameID == _userID);
                 return
                     new GameDetail
                     {
@@ -60,7 +60,7 @@ namespace FinalProject.Services
                 var query =
                     ctx
                         .Games
-                        .Where(e => e.GameID == id && e.GameID == _gameID)
+                        .Where(e => e.GameID == id && e.GameID == _userID)
                         .Select
                         (
                             e =>
@@ -82,7 +82,7 @@ namespace FinalProject.Services
                 var entity =
                      ctx
                          .Games
-                         .Single(e => e.GameID == model.GameID && e.GameID == _gameID);
+                         .Single(e => e.GameID == model.GameID && e.GameID == _userID);
 
                     entity.GameID = model.GameID;
                     entity.DeveloperName = model.DeveloperName;
@@ -103,7 +103,7 @@ namespace FinalProject.Services
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == GameID && e.GameID == _gameID);
+                        .Single(e => e.GameID == GameID && e.GameID == _userID);
                 ctx.Games.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

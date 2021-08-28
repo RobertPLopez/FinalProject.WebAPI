@@ -34,7 +34,6 @@ namespace FinalProject.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<User> Users {get; set;}
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
