@@ -62,15 +62,13 @@
     <Compile Include="Games\GameDetail.cs" />
     <Compile Include="Games\GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
-    <Compile Include="ReviewDetail.cs" />
-    <Compile Include="ReviewListItem.cs" />
+    <Compile Include="Review\ReviewDetail.cs" />
+    <Compile Include="Review\ReviewListItem.cs" />
     <Compile Include="Review\ReviewCreate.cs" />
     <Compile Include="Review\ReviewUpdate.cs" />
     <Compile Include="Reaction\ReactionCreate.cs" />
     <Compile Include="Reaction\ReactionEdit.cs" />
     <Compile Include="Reaction\ReactionListItem.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

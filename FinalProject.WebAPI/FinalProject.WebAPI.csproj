@@ -327,7 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinalProject.Data\FinalProject.Data.csproj">
-      <Project>{CB1C5F54-5A90-466D-904B-447217872B43}</Project>
+      <Project>{cb1c5f54-5a90-466d-904b-447217872b43}</Project>
       <Name>FinalProject.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\FinalProject.Models\FinalProject.Models.csproj">
@@ -335,7 +335,7 @@
       <Name>FinalProject.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\FinalProject.Services\FinalProject.Services.csproj">
-      <Project>{1C629A5D-1C98-411F-ABDD-7E4ACBA45B2E}</Project>
+      <Project>{1c629a5d-1c98-411f-abdd-7e4acba45b2e}</Project>
       <Name>FinalProject.Services</Name>
     </ProjectReference>
   </ItemGroup>
