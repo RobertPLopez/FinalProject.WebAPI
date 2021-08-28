@@ -57,18 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameEdit.cs" />
-    <Compile Include="GameDetail.cs" />
-    <Compile Include="GameCreate.cs" />
-    <Compile Include="GameListItem.cs" />
+    <Compile Include="Games\GameCreate.cs" />
+    <Compile Include="Games\GameEdit.cs" />
+    <Compile Include="Games\GameDetail.cs" />
+    <Compile Include="Games\GameListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewCreate.cs" />
+
     <Compile Include="ReviewDetail.cs" />
     <Compile Include="ReviewListItem.cs" />
-    <Compile Include="ReviewUpdate.cs" />
-    <Compile Include="ReactionCreate.cs" />
-    <Compile Include="ReactionEdit.cs" />
-    <Compile Include="ReactionListItem.cs" />
+    <Compile Include="Review\ReviewCreate.cs" />
+    <Compile Include="Review\ReviewUpdate.cs" />
+    <Compile Include="Reaction\ReactionCreate.cs" />
+    <Compile Include="Reaction\ReactionEdit.cs" />
+    <Compile Include="Reaction\ReactionListItem.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -80,6 +82,7 @@
       <Name>FinalProject.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
