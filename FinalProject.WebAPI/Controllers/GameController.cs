@@ -45,7 +45,7 @@ namespace FinalProject.WebAPI.Controllers
             return Ok(games);
         }
 
-        public IHttpActionResult Put (GameEdit Game)
+        public IHttpActionResult Put(GameEdit Game)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -54,6 +54,14 @@ namespace FinalProject.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
 
+        }
+
+        public IHttpActionResult Delete (Guid id)
+        {
+            var service = CreateGameServices();
+            if (!service.DeleteGame(id))
+                return InternalServerError();
+            return Ok();
         }
     }
 }

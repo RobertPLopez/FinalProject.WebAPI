@@ -95,5 +95,19 @@ namespace FinalProject.Services
                     return ctx.SaveChanges() == 1;
             };
         }
+
+        public bool DeleteGame(Guid GameID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Games
+                        .Single(e => e.GameID == GameID && e.GameID == _gameID);
+                ctx.Games.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
