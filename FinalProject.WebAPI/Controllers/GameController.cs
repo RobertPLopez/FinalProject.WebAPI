@@ -4,7 +4,7 @@ using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services;
 using Microsoft.AspNet.Identity;
-using FinalProject.Services;
+
 
 namespace FinalProject.WebAPI.Controllers
 {

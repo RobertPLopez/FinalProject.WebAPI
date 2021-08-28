@@ -92,7 +92,7 @@ namespace FinalProject.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-<
+
                      ctx
                          .Games
                          .Single(e => e.GameID == model.GameID && e.GameID == _userID);

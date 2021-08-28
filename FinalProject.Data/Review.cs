@@ -23,6 +23,7 @@ namespace FinalProject.Data
         public virtual Author Author { get; set; }*/
         [Required]
         public string AuthorName { get; set; }
+        public Guid AuthorId { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]
