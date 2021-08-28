@@ -29,17 +29,11 @@ namespace FinalProject.Data
         {
         }
 
-        public DbSet<Game> Games { get; set; }
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
         public DbSet<Review> Reviews { get; set; }
 
 
 
-        public DbSet<Game> Games { get; set; } //<--- Add this
+        public DbSet<Game> Games { get; set; }
 
 
         public DbSet<Reaction> Reactions { get; set; }

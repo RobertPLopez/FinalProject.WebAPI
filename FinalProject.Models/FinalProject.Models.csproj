@@ -67,10 +67,6 @@
     <Compile Include="Reaction\ReactionCreate.cs" />
     <Compile Include="Reaction\ReactionEdit.cs" />
     <Compile Include="Reaction\ReactionListItem.cs" />
-    <Compile Include="Users\UserListItem.cs" />
-    <Compile Include="Users\UserEdit.cs" />
-    <Compile Include="Users\UserDetail.cs" />
-    <Compile Include="Users\UserCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
