@@ -9,8 +9,8 @@ namespace FinalProject.Models
 {
     public class GameListItem
     {
-        public int GameId { get; set; }
-        public string Title { get; set; }	
+        public int GameID { get; set; }
+        public string DeveloperName { get; set; }	
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
