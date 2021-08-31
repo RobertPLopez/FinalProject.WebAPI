@@ -10,6 +10,7 @@ namespace FinalProject.Models
     public class GameDetail
     {
         public Guid GameID { get; set; }
+        public string GameTitle { get; set; }
         public string DeveloperName { get; set; }
         public string Description { get; set; }
         [Display(Name = "Here is the game you chose")]

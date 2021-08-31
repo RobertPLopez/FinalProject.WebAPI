@@ -24,8 +24,8 @@ namespace FinalProject.Services
             var entity =
                 new Game()
                 {
-
                     GameID = _userID,
+                    GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
                     CreatedUtc = DateTimeOffset.Now
@@ -51,6 +51,7 @@ namespace FinalProject.Services
                     new GameDetail
                     {
                         GameID = entity.GameID,
+                        GameTitle = entity.GameTitle,
                         DeveloperName = entity.DeveloperName,
                         Description = entity.Description,
                         CreatedUtc = entity.CreatedUtc,
@@ -98,6 +99,7 @@ namespace FinalProject.Services
                          .Single(e => e.GameID == model.GameID && e.GameID == _userID);
 
                     entity.GameID = model.GameID;
+                    entity.GameTitle = model.GameTitle;
                     entity.DeveloperName = model.DeveloperName;
                     entity.Description = model.Description;
                     entity.AverageRating = model.AverageRating;

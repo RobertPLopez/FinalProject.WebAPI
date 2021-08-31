@@ -17,5 +17,7 @@ namespace FinalProject.Models
         [Required]
         [MaxLength(5000)]
         public string Description { get; set; }
+        [Required]
+        public string GameTitle { get; set; }
     }
 }
