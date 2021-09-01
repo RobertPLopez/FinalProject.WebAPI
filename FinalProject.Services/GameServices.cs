@@ -11,11 +11,11 @@ namespace FinalProject.Services
 
     public class GameService
     {
-        private readonly Guid _userID;
+        private readonly int _gameID;
 
-        public GameService(Guid userID)
+        public GameService(int gameID)
         {
-            _userID = userID;
+            _gameID = gameID;
         }
 
         public bool CreateGame (GameCreate model)
@@ -24,7 +24,7 @@ namespace FinalProject.Services
             var entity =
                 new Game()
                 {
-                    GameID = _userID,
+                    GameID = _gameID,
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
@@ -39,14 +39,14 @@ namespace FinalProject.Services
         }
 
 
-        public GameDetail GetGamesById (Guid id)
+        public GameDetail GetGamesById (int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == id && e.GameID == _userID);
+                        .Single(e => e.GameID == id && e.GameID == _gameID);
                 return
                     new GameDetail
                     {
@@ -59,7 +59,7 @@ namespace FinalProject.Services
                     };
             }
         }
-        public IEnumerable<GameListItem> GetGamesByGameId(Guid id)
+        public IEnumerable<GameListItem> GetGamesByGameId(int id)
 
         {
             using (var ctx = new ApplicationDbContext())
@@ -68,7 +68,7 @@ namespace FinalProject.Services
                     ctx
                         .Games
 
-                        .Where(e => e.GameID == id && e.GameID == _userID)
+                        .Where(e => e.GameID == id && e.GameID == _gameID)
 
                         .Select
                         (
@@ -96,7 +96,7 @@ namespace FinalProject.Services
 
                      ctx
                          .Games
-                         .Single(e => e.GameID == model.GameID && e.GameID == _userID);
+                         .Single(e => e.GameID == model.GameID && e.GameID == _gameID);
 
                     entity.GameID = model.GameID;
                     entity.GameTitle = model.GameTitle;
@@ -111,7 +111,7 @@ namespace FinalProject.Services
             };
         }
 
-        public bool DeleteGame(Guid GameID)
+        public bool DeleteGame(int GameID)
 
         {
             using (var ctx = new ApplicationDbContext())
@@ -120,7 +120,7 @@ namespace FinalProject.Services
                     ctx
                         .Games
 
-                        .Single(e => e.GameID == GameID && e.GameID == _userID);
+                        .Single(e => e.GameID == GameID && e.GameID == _gameID);
                 ctx.Games.Remove(entity);
 
 
