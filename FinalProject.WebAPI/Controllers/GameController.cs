@@ -13,8 +13,8 @@ namespace FinalProject.WebAPI.Controllers
     {
         private GameService CreateGameServices()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var reactionServices = new GameService(userId);
+            var gameId = int.Parse(User.Identity.GetUserId());
+            var reactionServices = new GameService(gameId);
             return reactionServices;
         }
 
@@ -28,7 +28,7 @@ namespace FinalProject.WebAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(Guid id)
+        public IHttpActionResult Get(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -52,7 +52,7 @@ namespace FinalProject.WebAPI.Controllers
 
         }
 
-        public IHttpActionResult Delete (Guid id)
+        public IHttpActionResult Delete (int id)
         {
             var service = CreateGameServices();
             if (!service.DeleteGame(id))

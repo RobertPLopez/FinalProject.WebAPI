@@ -16,7 +16,7 @@ namespace FinalProject.Data
         [Key]
         public int ReviewId { get; set; }
         [ForeignKey(nameof(Game))]
-        public Guid GameID { get; set; }
+        public int GameID { get; set; }
         public virtual Game Game { get; set; }
 /*        [ForeignKey(nameof(Author))]
         public Guid AuthorId { get; set; }
