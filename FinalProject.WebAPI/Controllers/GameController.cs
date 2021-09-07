@@ -13,9 +13,8 @@ namespace FinalProject.WebAPI.Controllers
     {
         private GameService CreateGameServices()
         {
-            var gameId = int.Parse(User.Identity.GetUserId());
-            var reactionServices = new GameService(gameId);
-            return reactionServices;
+            var gameServices = new GameService();
+            return gameServices;
         }
 
         public IHttpActionResult Post(GameCreate Game)
@@ -37,7 +36,7 @@ namespace FinalProject.WebAPI.Controllers
             }
 
             var service = CreateGameServices();
-            var games = service.GetGamesByGameId(id);
+            var games = service.GetGamesById(id);
             return Ok(games);
         }
 
