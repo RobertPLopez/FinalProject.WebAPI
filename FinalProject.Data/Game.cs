@@ -17,7 +17,9 @@ namespace FinalProject.Data
     public class Game
     {
         [Key]
-        public Guid GameID { get; set; }
+        public Guid GameID { get; set; } //Primary key for Game
+        [Required]
+        public Guid UserID { get; set; } //Application User's unique ID
         [Required]
         public string GameTitle { get; set; }
         [Required]

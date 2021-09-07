@@ -18,13 +18,12 @@ namespace FinalProject.Services
             _userID = userID;
         }
 
-        public bool CreateGame (GameCreate model)
-
+        public bool CreateGame(GameCreate model)
         {
             var entity =
                 new Game()
                 {
-                    GameID = _userID,
+                    UserID = _userID,
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
@@ -39,14 +38,14 @@ namespace FinalProject.Services
         }
 
 
-        public GameDetail GetGamesById (Guid id)
+        public GameDetail GetGameById(Guid gameId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == id && e.GameID == _userID);
+                        .Single(e => e.GameID == gameId);
                 return
                     new GameDetail
                     {
@@ -59,7 +58,7 @@ namespace FinalProject.Services
                     };
             }
         }
-        public IEnumerable<GameListItem> GetGamesByGameId(Guid id)
+        public IEnumerable<GameListItem> GetAllGames()
 
         {
             using (var ctx = new ApplicationDbContext())
@@ -67,21 +66,17 @@ namespace FinalProject.Services
                 var query =
                     ctx
                         .Games
-
-                        .Where(e => e.GameID == id && e.GameID == _userID)
-
                         .Select
                         (
                             e =>
                                 new GameListItem
                                 {
-
                                     GameID = e.GameID,
-
+                                    GameTitle = e.GameTitle,
+                                    DeveloperName = e.DeveloperName,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );
-
                 return query.ToArray();
             }
         }
@@ -96,18 +91,18 @@ namespace FinalProject.Services
 
                      ctx
                          .Games
-                         .Single(e => e.GameID == model.GameID && e.GameID == _userID);
+                         .Single(e => e.GameID == model.GameID && e.UserID == _userID);
 
-                    entity.GameID = model.GameID;
-                    entity.GameTitle = model.GameTitle;
-                    entity.DeveloperName = model.DeveloperName;
-                    entity.Description = model.Description;
-                    entity.AverageRating = model.AverageRating;
-                    entity.AgeOfPlayer = model.AgeOfPlayer;
-                    entity.CreatedUtc = model.CreatedUtc;
-                    entity.ModifiedUtc = model.ModifiedUtc;
+                entity.GameTitle = model.GameTitle;
+                entity.DeveloperName = model.DeveloperName;
+                entity.Description = model.Description;
+                entity.Genre = model.Genre;
+                entity.AverageRating = model.AverageRating;
+                entity.AgeOfPlayer = model.AgeOfPlayer;
+                entity.CreatedUtc = model.CreatedUtc;
+                entity.ModifiedUtc = model.ModifiedUtc;
 
-                    return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 1;
             };
         }
 
@@ -120,7 +115,7 @@ namespace FinalProject.Services
                     ctx
                         .Games
 
-                        .Single(e => e.GameID == GameID && e.GameID == _userID);
+                        .Single(e => e.GameID == GameID && e.UserID == _userID);
                 ctx.Games.Remove(entity);
 
 
