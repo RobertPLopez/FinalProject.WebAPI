@@ -25,7 +25,7 @@ namespace FinalProject.Services
                 var reaction = 
                     ctx
                     .Reactions
-                    .SingleOrDefault(e => e.UserId == _userId && e.ReviewId == model.ReviewId);
+                    .SingleOrDefault(e => e.UserID == _userId && e.ReviewId == model.ReviewId);
 
                 if (review is null)
                     return false;
@@ -43,7 +43,7 @@ namespace FinalProject.Services
                 {
                     var entity = new Reaction()
                     {
-                        UserId = _userId,
+                        UserID = _userId,
                         ReviewId = model.ReviewId,
                         Content = model.Content,
                         CreatedUtc = DateTimeOffset.UtcNow
@@ -85,7 +85,7 @@ namespace FinalProject.Services
                 var entity =
                     ctx
                         .Reactions
-                        .Single(e => e.ID == id && e.UserId == _userId);
+                        .Single(e => e.ID == id && e.UserID == _userId);
 
                 ctx.Reactions.Remove(entity);
                 return ctx.SaveChanges() == 1;
@@ -99,7 +99,7 @@ namespace FinalProject.Services
                 var entity =
                     ctx
                         .Reactions
-                        .Single(e => e.ID == model.ReactionId && e.UserId == _userId);
+                        .Single(e => e.ID == model.ReactionId && e.UserID == _userId);
 
                 entity.Content = model.Content;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;

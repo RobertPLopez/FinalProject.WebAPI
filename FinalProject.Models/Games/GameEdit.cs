@@ -9,7 +9,7 @@ namespace FinalProject.Models
 {
     public class GameEdit
     {
-        public int GameID { get; set; }
+        public Guid GameID { get; set; }
         public string GameTitle { get; set; }
         public string DeveloperName { get; set; }
         public string Description { get; set; }

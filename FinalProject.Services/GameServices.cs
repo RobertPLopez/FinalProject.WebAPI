@@ -23,7 +23,6 @@ namespace FinalProject.Services
             var entity =
                 new Game()
                 {
-                    GameID = model.GameID,
                     UserID = _userID,
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
@@ -103,7 +102,7 @@ namespace FinalProject.Services
             };
         }
 
-        public bool DeleteGame(int gameID)
+        public bool DeleteGame(Guid GameID)
         {
             using (var ctx = new ApplicationDbContext())
             {
