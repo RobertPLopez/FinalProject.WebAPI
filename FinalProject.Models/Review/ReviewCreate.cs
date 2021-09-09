@@ -15,5 +15,8 @@ namespace FinalProject.Models
         public string Content { get; set; }
         public double Rating { get; set; }
 
+        public Guid GameID { get; set; }
+
+
     }
 }

@@ -11,7 +11,8 @@
                 "dbo.Game",
                 c => new
                     {
-                        GameID = c.Int(nullable: false, identity: true),
+                        GameID = c.Guid(nullable: false),
+                        UserID = c.Guid(nullable: false),
                         GameTitle = c.String(nullable: false),
                         DeveloperName = c.String(nullable: false),
                         Description = c.String(nullable: false),
@@ -28,7 +29,7 @@
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        UserId = c.Guid(nullable: false),
+                        UserID = c.Guid(nullable: false),
                         ReviewId = c.Int(nullable: false),
                         Content = c.Int(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
@@ -43,7 +44,7 @@
                 c => new
                     {
                         ReviewId = c.Int(nullable: false, identity: true),
-                        GameID = c.Int(nullable: false),
+                        GameID = c.Guid(nullable: false),
                         AuthorName = c.String(nullable: false),
                         AuthorId = c.Guid(nullable: false),
                         Content = c.String(nullable: false),
