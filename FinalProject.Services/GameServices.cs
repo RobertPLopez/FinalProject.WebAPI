@@ -1,4 +1,4 @@
-﻿using FinalProject.Data;
+using FinalProject.Data;
 using FinalProject.Models;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,20 @@ namespace FinalProject.Services
 
     public class GameService
     {
-        public bool CreateGame (GameCreate model)
+        private readonly Guid _userID;
+
+        public GameService(Guid userID)
+        {
+            _userID = userID;
+        }
+
+        public bool CreateGame(GameCreate model)
         {
             var entity =
                 new Game()
                 {
                     GameID = model.GameID,
+                    UserID = _userID,
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
@@ -30,14 +38,14 @@ namespace FinalProject.Services
             }
         }
 
-        public GameDetail GetGamesById (int id)
+        public GameDetail GetGameById(Guid gameId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == id);
+                        .Single(e => e.GameID == gameId);
                 return
                     new GameDetail
                     {
@@ -50,7 +58,7 @@ namespace FinalProject.Services
                     };
             }
         }
-        public IEnumerable<GameListItem> GetGamesByGameId(int id)
+        public IEnumerable<GameListItem> GetAllGames()
 
         {
             using (var ctx = new ApplicationDbContext())
@@ -58,17 +66,17 @@ namespace FinalProject.Services
                 var query =
                     ctx
                         .Games
-                        .Where(e => e.GameID == id)
                         .Select
                         (
                             e =>
                                 new GameListItem
                                 {
                                     GameID = e.GameID,
+                                    GameTitle = e.GameTitle,
+                                    DeveloperName = e.DeveloperName,
                                     CreatedUtc = e.CreatedUtc
                                 }
                         );
-
                 return query.ToArray();
             }
         }
@@ -80,18 +88,18 @@ namespace FinalProject.Services
                 var entity =
                      ctx
                          .Games
-                         .Single(e => e.GameID == model.GameID);
+                         .Single(e => e.GameID == model.GameID && e.UserID == _userID);
 
-                    entity.GameID = model.GameID;
-                    entity.GameTitle = model.GameTitle;
-                    entity.DeveloperName = model.DeveloperName;
-                    entity.Description = model.Description;
-                    entity.AverageRating = model.AverageRating;
-                    entity.AgeOfPlayer = model.AgeOfPlayer;
-                    entity.CreatedUtc = model.CreatedUtc;
-                    entity.ModifiedUtc = model.ModifiedUtc;
+                entity.GameTitle = model.GameTitle;
+                entity.DeveloperName = model.DeveloperName;
+                entity.Description = model.Description;
+                entity.Genre = model.Genre;
+                entity.AverageRating = model.AverageRating;
+                entity.AgeOfPlayer = model.AgeOfPlayer;
+                entity.CreatedUtc = model.CreatedUtc;
+                entity.ModifiedUtc = model.ModifiedUtc;
 
-                    return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 1;
             };
         }
 
@@ -102,7 +110,7 @@ namespace FinalProject.Services
                 var entity =
                     ctx
                         .Games
-                        .Single(e => e.GameID == gameID);
+                        .Single(e => e.GameID == GameID && e.UserID == _userID);
                 ctx.Games.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
