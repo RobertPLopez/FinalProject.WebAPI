@@ -18,9 +18,6 @@ namespace FinalProject.Data
         [ForeignKey(nameof(Game))]
         public int GameID { get; set; }
         public virtual Game Game { get; set; }
-/*        [ForeignKey(nameof(Author))]
-        public Guid AuthorId { get; set; }
-        public virtual Author Author { get; set; }*/
         [Required]
         public string AuthorName { get; set; }
         public Guid AuthorId { get; set; }
