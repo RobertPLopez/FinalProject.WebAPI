@@ -16,7 +16,7 @@ namespace FinalProject.Services
         {
             _userId = userId;
         }
-        public IEnumerable<ReviewListItem> GetReviews()
+        public IEnumerable<ReviewDetail> GetReviews()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -26,11 +26,13 @@ namespace FinalProject.Services
                         .Where(e => e.AuthorId == _userId)
                         .Select(
                             e =>
-                                new ReviewListItem
+                                new ReviewDetail
                                 {
                                     ReviewId = e.ReviewId,
                                     AuthorName = e.AuthorName,
-                                    CreatedUtc = e.CreatedUtc
+                                    Content = e.Content,
+                                    CreatedUtc = e.CreatedUtc,
+                                    ModifiedUtc = e.ModifiedUtc
                                 }
                             );
                 return query.ToArray();
@@ -61,7 +63,8 @@ namespace FinalProject.Services
                 AuthorName = model.AuthorName,
                 Content = model.Content,
                 Rating = model.Rating,
-                CreatedUtc = DateTimeOffset.Now
+                CreatedUtc = DateTimeOffset.Now,
+                GameID = model.GameID
             };
             using (var ctx = new ApplicationDbContext())
             {
