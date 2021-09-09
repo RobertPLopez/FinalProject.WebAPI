@@ -19,20 +19,39 @@ namespace FinalProject.Services
 
         public bool CreateReaction(ReactionCreate model)
         {
-            var entity =
-                new Reaction()
-                {
-                    UserId = _userId,
-                    ReviewId = model.ReviewId,
-                    Content = model.Content,
-                    CreatedUtc = DateTimeOffset.UtcNow
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
-                entity.Review = ctx.Reviews.Find(model.ReviewId);
-                ctx.Reactions.Add(entity);
-                return ctx.SaveChanges() == 1;
+                var review = ctx.Reviews.Find(model.ReviewId);
+                var reaction = 
+                    ctx
+                    .Reactions
+                    .SingleOrDefault(e => e.UserId == _userId && e.ReviewId == model.ReviewId);
+
+                if (review is null)
+                    return false;
+                else if (reaction != null)
+                {
+                    return UpdateReaction(
+                        new ReactionEdit()
+                        {
+                            ReactionId = reaction.ID,
+                            Content = model.Content
+                        }
+                        );
+                }
+                else
+                {
+                    var entity = new Reaction()
+                    {
+                        UserId = _userId,
+                        ReviewId = model.ReviewId,
+                        Content = model.Content,
+                        CreatedUtc = DateTimeOffset.UtcNow
+                    };
+
+                    ctx.Reactions.Add(entity);
+                    return ctx.SaveChanges() == 1;
+                }
             }
         }
 
@@ -43,7 +62,7 @@ namespace FinalProject.Services
                 var query =
                     ctx
                         .Reactions
-                        .Where(e => e.ReviewId == id && e.UserId == _userId)
+                        .Where(e => e.ReviewId == id)
                         .Select
                         (
                             e =>

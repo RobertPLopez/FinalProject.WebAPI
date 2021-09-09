@@ -7,13 +7,13 @@ namespace FinalProject.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class PostDavidedits : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PostDavidedits));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108281756286_Post David edits"; }
+            get { return "202109022210496_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

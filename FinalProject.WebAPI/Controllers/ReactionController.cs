@@ -36,14 +36,12 @@ namespace FinalProject.WebAPI.Controllers
 
         public IHttpActionResult Get(int id)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                if (ctx.Reviews.Find(id) is null)
-                    return BadRequest("Invalid Request");
-            }
-
             var service = CreateReactionServices();
             var reactions = service.GetReactionsByReviewId(id);
+
+            if (reactions is null)
+                return BadRequest("No reactions");
+
             return Ok(reactions);
         }
 

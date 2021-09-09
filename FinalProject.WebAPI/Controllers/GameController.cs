@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web.Http;
 using FinalProject.Data;
 using FinalProject.Models;
@@ -36,6 +36,7 @@ namespace FinalProject.WebAPI.Controllers
                 return Ok();
             }
         }
+
 
         public IHttpActionResult Get(Guid gameID)
         {

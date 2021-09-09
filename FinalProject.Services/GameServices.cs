@@ -1,4 +1,4 @@
-﻿using FinalProject.Data;
+using FinalProject.Data;
 using FinalProject.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,7 @@ namespace FinalProject.Services
             var entity =
                 new Game()
                 {
+                    GameID = model.GameID,
                     UserID = _userID,
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
@@ -36,7 +37,6 @@ namespace FinalProject.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
 
         public GameDetail GetGameById(Guid gameId)
         {
@@ -81,14 +81,11 @@ namespace FinalProject.Services
             }
         }
 
-
         public bool UpdateGame(GameEdit model)
-
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
-
                      ctx
                          .Games
                          .Single(e => e.GameID == model.GameID && e.UserID == _userID);
@@ -106,18 +103,15 @@ namespace FinalProject.Services
             };
         }
 
-        public bool DeleteGame(Guid GameID)
-
+        public bool DeleteGame(int gameID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Games
-
                         .Single(e => e.GameID == GameID && e.UserID == _userID);
                 ctx.Games.Remove(entity);
-
 
                 return ctx.SaveChanges() == 1;
             }
