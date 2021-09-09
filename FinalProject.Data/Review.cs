@@ -16,13 +16,11 @@ namespace FinalProject.Data
         [Key]
         public int ReviewId { get; set; }
         [ForeignKey(nameof(Game))]
-        public int GameId { get; set; }
+        public Guid GameID { get; set; }
         public virtual Game Game { get; set; }
-        [ForeignKey(nameof(Author))]
-        public Guid AuthorId { get; set; }
-        public virtual Author Author { get; set; }
         [Required]
         public string AuthorName { get; set; }
+        public Guid AuthorId { get; set; }
         [Required]
         public string Content { get; set; }
         [Required]
@@ -30,10 +28,6 @@ namespace FinalProject.Data
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
-        
-
-
-
 
     }
 }

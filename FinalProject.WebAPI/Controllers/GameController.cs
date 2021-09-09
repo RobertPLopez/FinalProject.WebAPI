@@ -1,74 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System;
 using System.Web.Http;
 using FinalProject.Data;
 using FinalProject.Models;
 using FinalProject.Services;
 using Microsoft.AspNet.Identity;
 
+
 namespace FinalProject.WebAPI.Controllers
 {
     [Authorize]
     public class GameController : ApiController
     {
-        private GameServices CreateGameServices()
+        private GameService CreateGameServices()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var reactionServices = new GameServices(userId);
-            return reactionServices;
+            var gameServices = new GameService(userId);
+            return gameServices;
         }
 
-        public IHttpActionResult Post(GameCreate game)
+        public IHttpActionResult Post(GameCreate model)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            var service = CreateGameServices();
+                var Services = CreateGameServices();
 
-            if (!service.CreateGame(game))
-                return InternalServerError();
+                if (!Services.CreateGame(model))
+                {
+                    return InternalServerError();
+                }
 
-            return Ok();
+                return Ok();
+            }
         }
 
-        public IHttpActionResult Get(int id)
+
+        public IHttpActionResult Get(Guid gameID)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                if (ctx.Games.Find(id) is null)
+                if (ctx.Games.Find(gameID) is null)
+                {
                     return BadRequest("Invalid Request");
+                }
             }
 
             var service = CreateGameServices();
-            var games = service.GetGameByGameId(id);
-            return Ok(games);
+            var model = service.GetGameById(gameID);
+            return Ok(model);
         }
 
-        public IHttpActionResult Delete(int id)
-        {
-            var service = CreateGameServices();
-
-            if (!service.DeleteGame(id))
-                return InternalServerError();
-
-            return Ok();
-        }
-
-        public IHttpActionResult Put(GameEdit game)
+        public IHttpActionResult Put(GameEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var service = CreateGameServices();
-
-            if (!service.UpdateGame(game))
+            if (!service.UpdateGame(model))
                 return InternalServerError();
-
             return Ok();
 
+        }
+
+        public IHttpActionResult Delete(Guid gameID)
+        {
+            var service = CreateGameServices();
+            if (!service.DeleteGame(gameID))
+                return InternalServerError();
+            return Ok();
         }
     }
 }
