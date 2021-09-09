@@ -23,7 +23,7 @@ namespace FinalProject.Data
         public int ID { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
+        public Guid UserID{ get; set; }
 
         [ForeignKey(nameof(Review))]
         public int ReviewId { get; set; }

@@ -10,7 +10,7 @@ namespace FinalProject.Models
    public class GameCreate
     {
         [Required]
-        public int GameID { get; set; }
+        public Guid GameID { get; set; }
         [Required]
         [MaxLength(1000)]
         public string DeveloperName { get; set; }

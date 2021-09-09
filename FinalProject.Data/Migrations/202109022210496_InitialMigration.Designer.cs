@@ -13,12 +13,12 @@ namespace FinalProject.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202109010105062_InitialMigration"; }
+            get { return "202109022210496_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

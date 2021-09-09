@@ -9,7 +9,7 @@ namespace FinalProject.Models
 {
     public class GameListItem
     {
-        public int GameID { get; set; }
+        public Guid GameID { get; set; }
         public string GameTitle { get; set; }
         public string DeveloperName { get; set; }	
         [Display(Name = "Created")]
