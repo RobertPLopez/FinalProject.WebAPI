@@ -24,6 +24,7 @@ namespace FinalProject.Data
         [Required]
         public string Content { get; set; }
         [Required]
+        [Range (0, 10)]
         public double Rating { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
