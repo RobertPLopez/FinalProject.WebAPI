@@ -7,12 +7,6 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Data
 {
-    public enum GameGenre
-    {
-        RPG,
-        MMO,
-        Text,
-    }
 
     public class Game
     {
@@ -26,12 +20,21 @@ namespace FinalProject.Data
         public string DeveloperName { get; set; }
         [Required]
         public string Description { get; set; }
-        [Required]
-        public GameGenre Genre { get; set; }
-        [Required]
-        public double AverageRating { get; }
-        [Required]
-        public int AgeOfPlayer { get; set; }
+
+        public virtual List<Review> Reveiws{ get; set; } = new List<Review>();
+        public double AverageRating
+        { get
+            {
+                double totalAverageRating = 0;
+                foreach (var rating in Reveiws)
+                {
+                    totalAverageRating += rating.Rating;
+                }
+                return Reveiws.Count > 0
+                    ? Math.Round(totalAverageRating / Reveiws.Count, 2)
+                    : 0;
+            }
+        }
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
     }
