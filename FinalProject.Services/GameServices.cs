@@ -93,7 +93,6 @@ namespace FinalProject.Services
                 entity.DeveloperName = model.DeveloperName;
                 entity.Description = model.Description;
                 entity.Genre = model.Genre;
-                entity.AverageRating = model.AverageRating;
                 entity.AgeOfPlayer = model.AgeOfPlayer;
                 entity.CreatedUtc = model.CreatedUtc;
                 entity.ModifiedUtc = model.ModifiedUtc;

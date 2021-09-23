@@ -29,7 +29,7 @@ namespace FinalProject.Data
         [Required]
         public GameGenre Genre { get; set; }
         [Required]
-        public double AverageRating { get; set; }
+        public double AverageRating { get; }
         [Required]
         public int AgeOfPlayer { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }

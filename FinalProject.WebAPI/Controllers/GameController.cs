@@ -53,6 +53,21 @@ namespace FinalProject.WebAPI.Controllers
             return Ok(model);
         }
 
+        public IHttpActionResult Get()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                if (ctx.Games.Find() is null)
+                {
+                    return BadRequest("Invalid Request");
+                }
+            }
+
+            var service = CreateGameServices();
+            var model = service.GetAllGames();
+            return Ok(model);
+        }
+
         public IHttpActionResult Put(GameEdit model)
         {
             if (!ModelState.IsValid)
