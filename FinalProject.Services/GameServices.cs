@@ -24,6 +24,7 @@ namespace FinalProject.Services
                 new Game()
                 {
                     UserID = _userID,
+                    GameID = Guid.NewGuid(),
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
