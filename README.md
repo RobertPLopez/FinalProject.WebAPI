@@ -19,3 +19,11 @@ How to utilize:
   We have multiple future goals for this API that we wish to explore. This includes adding a front-end interface, using an external data set as the seed data, instituting asyncronise programming into the API, and adding different data tables (such as cheat codes, guidebooks, or walkthroughs for the various games). We are currently in the process of exploring and building out these outside capabilities. 
   
   If anyone has any questions about our API, please do not hesitate to reach out!
+
+For Further research please reference the links below
+
+Google Planning Doc: https://docs.google.com/document/d/1tZM32K1eSXw5MHtgB99oErnEAlreUkEdvnNFr3Zt1nE/edit
+
+DbDiagram: https://dbdiagram.io/d/611c493e2ecb310fc3cfb266
+
+Trello: https://trello.com/b/o81zqS1g/board-1
