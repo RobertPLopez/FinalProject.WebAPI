@@ -89,13 +89,9 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202109092255028_InitialMigration.cs" />
-    <Compile Include="Migrations\202109092255028_InitialMigration.designer.cs">
-      <DependentUpon>202109092255028_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109232350050_FixedAverages.cs" />
-    <Compile Include="Migrations\202109232350050_FixedAverages.designer.cs">
-      <DependentUpon>202109232350050_FixedAverages.cs</DependentUpon>
+    <Compile Include="Migrations\202109251332233_InitialMigration.cs" />
+    <Compile Include="Migrations\202109251332233_InitialMigration.designer.cs">
+      <DependentUpon>202109251332233_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,11 +124,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109092255028_InitialMigration.resx">
-      <DependentUpon>202109092255028_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109232350050_FixedAverages.resx">
-      <DependentUpon>202109232350050_FixedAverages.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109251332233_InitialMigration.resx">
+      <DependentUpon>202109251332233_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
