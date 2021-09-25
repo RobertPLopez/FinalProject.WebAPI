@@ -53,11 +53,11 @@ namespace FinalProject.WebAPI.Controllers
             return Ok(model);
         }
 
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(GameListItem GetGameTable)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                if (ctx.Games.Find() is null)
+                if (ctx.Games.Find(GetGameTable) is null)
                 {
                     return BadRequest("Invalid Request");
                 }

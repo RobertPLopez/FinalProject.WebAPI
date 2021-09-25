@@ -24,6 +24,7 @@ namespace FinalProject.Services
                 new Game()
                 {
                     UserID = _userID,
+                    GameID = Guid.NewGuid(),
                     GameTitle = model.GameTitle,
                     DeveloperName = model.DeveloperName,
                     Description = model.Description,
@@ -92,8 +93,6 @@ namespace FinalProject.Services
                 entity.GameTitle = model.GameTitle;
                 entity.DeveloperName = model.DeveloperName;
                 entity.Description = model.Description;
-                entity.Genre = model.Genre;
-                entity.AgeOfPlayer = model.AgeOfPlayer;
                 entity.CreatedUtc = model.CreatedUtc;
                 entity.ModifiedUtc = model.ModifiedUtc;
 
