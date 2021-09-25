@@ -9,8 +9,6 @@ namespace FinalProject.Models
 {
    public class GameCreate
     {
-        
-        [Required]
         [Required]
         [MaxLength(1000)]
         public string DeveloperName { get; set; }
