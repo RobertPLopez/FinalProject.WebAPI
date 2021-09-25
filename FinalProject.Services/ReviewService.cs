@@ -31,6 +31,7 @@ namespace FinalProject.Services
                                     ReviewId = e.ReviewId,
                                     AuthorName = e.AuthorName,
                                     Content = e.Content,
+                                    Rating = e.Rating,
                                     CreatedUtc = e.CreatedUtc,
                                     ModifiedUtc = e.ModifiedUtc
                                 }
@@ -49,6 +50,7 @@ namespace FinalProject.Services
                         ReviewId = entity.ReviewId,
                         AuthorName = entity.AuthorName,
                         Content = entity.Content,
+                        Rating = entity.Rating,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
