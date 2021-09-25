@@ -9,12 +9,14 @@ namespace FinalProject.Models
 {
     public class ReviewCreate
     {
+        [Required]
         public string AuthorName { get; set; }
-
+        [Required]
         [MaxLength(1000)]
         public string Content { get; set; }
+        [Required]
         public double Rating { get; set; }
-
+        [Required]
         public Guid GameID { get; set; }
 
 
