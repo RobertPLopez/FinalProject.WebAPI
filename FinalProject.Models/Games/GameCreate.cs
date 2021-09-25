@@ -11,6 +11,7 @@ namespace FinalProject.Models
     {
         
         [Required]
+        [Required]
         [MaxLength(1000)]
         public string DeveloperName { get; set; }
         [Required]
